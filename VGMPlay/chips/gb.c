@@ -55,6 +55,7 @@ TODO:
 #include "mamedef.h"
 #include <stdlib.h>	// for rand
 #include <string.h>	// for memset
+#include <stdio.h> // for printf
 //#include "emu.h"
 #include "gb.h"
 //#include "streams.h"
