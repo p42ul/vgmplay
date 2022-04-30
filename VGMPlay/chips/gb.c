@@ -199,6 +199,68 @@ struct SOUNDC
 };
 
 
+void print_sound(struct SOUND* sound)
+{
+	printf("on %d\n", sound->on);
+	printf("reg0 %d\n", sound->reg[0]);
+	printf("reg1 %d\n", sound->reg[1]);
+	printf("reg2 %d\n", sound->reg[2]);
+	printf("reg3 %d\n", sound->reg[3]);
+	printf("reg4 %d\n", sound->reg[4]);
+	printf("channel %d\n", sound->channel);
+	printf("length %d\n", sound->length);
+	printf("length_mask %d\n", sound->length_mask);
+	printf("length_counting %d\n", sound->length_counting);
+	printf("length_enabled %d\n", sound->length_enabled);
+
+	printf("cycles_left %d\n", sound->cycles_left);
+	printf("duty %d\n", sound->duty);
+
+	printf("envelope_enabled %d\n", sound->envelope_enabled);
+	printf("envelope_value %d\n", sound->envelope_value);
+	printf("envelope_direction %d\n", sound->envelope_direction);
+	printf("envelope_time %d\n", sound->envelope_time);
+	printf("envelope_count %d\n", sound->envelope_count);
+	printf("signal %d\n", sound->signal);
+
+	printf("frequency %d\n", sound->frequency);
+	printf("frequency_counter %d\n", sound->frequency_counter);
+	printf("sweep_enabled %d\n", sound->sweep_enabled);
+	printf("sweep_neg_mode_used %d\n", sound->sweep_neg_mode_used);
+	printf("sweep_shift %d\n", sound->sweep_shift);
+	printf("sweep_direction %d\n", sound->sweep_direction);
+	printf("sweep_time %d\n", sound->sweep_time);
+	printf("sweep_count %d\n", sound->sweep_count);
+
+	printf("level %d\n", sound->level);
+	printf("offset %d\n", sound->offset);
+	printf("duty_count %d\n", sound->duty_count);
+	printf("current_sample %d\n", sound->current_sample);
+	printf("sample_reading %d\n", sound->sample_reading);
+
+	printf("noise_short %d\n", sound->noise_short);
+	printf("noise_lfsr %d\n", sound->noise_lfsr);
+	printf("Muted %d\n", sound->Muted);
+}
+
+void print_soundc(struct SOUNDC* soundc)
+{
+	printf("global_on %d\n", soundc->on);
+	printf("vol_left %d\n", soundc->vol_left);
+	printf("vol_right %d\n", soundc->vol_right);
+	printf("mode1_left %d\n", soundc->mode1_left);
+	printf("mode1_right %d\n", soundc->mode1_right);
+	printf("mode2_left %d\n", soundc->mode2_left);
+	printf("mode2_right %d\n", soundc->mode2_right);
+	printf("mode3_left %d\n", soundc->mode3_left);
+	printf("mode3_right %d\n", soundc->mode3_right);
+	printf("mode4_left %d\n", soundc->mode4_left);
+	printf("mode4_right %d\n", soundc->mode4_right);
+	printf("cycles %d\n", soundc->cycles);
+	printf("wave_ram_locked %d\n", soundc->wave_ram_locked);
+}
+
+
 #define GBMODE_DMG      0x00
 #define GBMODE_CGB04    0x01
 typedef struct _gb_sound_t gb_sound_t;
@@ -668,6 +730,16 @@ void gb_sound_w_internal(gb_sound_t *gb, UINT8 offset, UINT8 data)
 		gb->snd_regs[NR52] = data & 0x80;
 		break;
 	}
+	printf("mode: snd_1\n");
+	print_sound(&gb->snd_1);
+	printf("mode: snd_2\n");
+	print_sound(&gb->snd_2);
+	printf("mode: snd_3\n");
+	print_sound(&gb->snd_3);
+	printf("mode: snd_4\n");
+	print_sound(&gb->snd_4);
+	printf("mode: soundc\n");
+	print_soundc(&gb->snd_control);
 }
 
 void gb_sound_w(UINT8 ChipID, offs_t offset, UINT8 data)
