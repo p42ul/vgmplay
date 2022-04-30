@@ -1061,7 +1061,6 @@ void PlayVGM(void)
 	PauseThread = false;
 	AutoStopSkip = true;
 	ForceVGMExec = false;
-
 	
 	return;
 }
