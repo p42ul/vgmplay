@@ -1061,6 +1061,7 @@ void PlayVGM(void)
 	PauseThread = false;
 	AutoStopSkip = true;
 	ForceVGMExec = false;
+
 	
 	return;
 }
@@ -4744,6 +4745,7 @@ static void InterpretVGM(UINT32 SampleCount)
 	SmplPlayed = SamplePbk2VGM_I(VGMSmplPlayed + SampleCount);
 	while(VGMSmplPos <= SmplPlayed)
 	{
+		printf("VGMSmplPos: %d\n", VGMSmplPos);
 		Command = VGMData[VGMPos + 0x00];
 		if (Command >= 0x70 && Command <= 0x8F)
 		{
